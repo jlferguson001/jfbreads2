@@ -5,7 +5,11 @@ const Bread = require('../models/bread.js')
 
 //index (landing page)
 breads.get('/', (req, res) =>{
-    res.send(Bread)
+    res.render('Index',
+    {
+        breads: Bread,
+        title: 'Index Page'
+    })
 })
 
 //show
