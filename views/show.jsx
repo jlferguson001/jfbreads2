@@ -21,9 +21,10 @@ function Show ({bread, index}) {
                 <input type='submit' value="DELETE"/>
             </form>
 
-            <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
-            <img src={bread.image} alt={bread.name}/>
-            <p>Baked by {bread.baker}</p>
+            <img src={bread.image} alt={bread.name} />
+                <p>{bread.getBakedBy()}</p>
+                <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>          
+
             <li><a href='/breads'>Go Home Now</a></li>
            
            
