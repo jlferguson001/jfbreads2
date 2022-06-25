@@ -23,6 +23,7 @@ function Show ({bread, index}) {
 
             <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
             <img src={bread.image} alt={bread.name}/>
+            <p>Baked by {bread.baker}</p>
             <li><a href='/breads'>Go Home Now</a></li>
            
            
