@@ -12,9 +12,10 @@ function Index ({breads, title}) {
                         //key = {index} assisted in removing the each child unique "key" warning.  {bread.name}pulls in the name to the list
                         return(<li key = {index}>
                            {/* <a href={}></a> first bread will link to /breds/o */}
-                            <a href={`/breads/${index}`}>
-                            {bread.name}
+                           <a href={`/breads/${bread.id}`}>
+                                {bread.name}
                             </a>
+
                         </li>)
                     })
                 }
