@@ -5,7 +5,7 @@ function Show ({bread, index}) {
     // console.log(bread.name)
     return (
         <Default>
-            <h2>Show Bread Page</h2>
+            {/* <h2>Show Bread Page</h2> */}
             <h3>{bread.name}</h3>
             <p>
                 and it 
@@ -16,14 +16,15 @@ function Show ({bread, index}) {
                 }
                 have gluten.
             </p>
-
+            
+            <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>          
             <form action={`/breads/${bread.id}?_method=DELETE`} method="POST">
                 <input type='submit' value="DELETE"/>
             </form>
 
             <img src={bread.image} alt={bread.name} />
                 <p>{bread.getBakedBy()}</p>
-                <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>          
+                
 
             <li><a href='/breads'>Go Home Now</a></li>
            

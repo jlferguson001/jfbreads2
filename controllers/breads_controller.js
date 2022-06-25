@@ -4,33 +4,50 @@ const Bread = require('../models/bread.js')
 const Baker = require('../models/baker.js')
 
 //index (landing page)
-breads.get('/', (req, res) =>{
-  Bread.find()
-    .then(foundBreads => {
-      res.render('index', {
-        breads: foundBreads,
-        title: 'Index Page'
+// Index:
+breads.get('/', (req, res) => {
+  Baker.find()
+    .then(foundBakers => {
+      Bread.find()
+      .then(foundBreads => {
+          res.render('index', {
+              breads: foundBreads,
+              bakers: foundBakers,
+              title: 'Index Page'
+          })
       })
-      console.log(foundBreads)
     })
+})
+
     // res.render('Index',
     // {
     //     breads: Bread,
     //     title: 'Index Page'
     // })
-})
+
 //new
 breads.get('/new', (req, res) => {
-    res.render('new')
+  Baker.find()
+  .then(foundBakers =>{
+    res.render('new', {
+      bakers: foundBakers
+    })
+  })
+    
 })
 
  //Edit
  breads.get('/:id/edit', (req, res) => {
     Baker.find()
       .then(foundBakers => {
-        res.render('new', {
-          bakers: foundBakers
+        Bread.findById(req.params.id)
+        .then(foundBread => {
+          res.render('edit', {
+            bread: foundBread,
+            bakers: foundBakers
+          })
         })
+       
       })
  })
    
@@ -38,6 +55,7 @@ breads.get('/new', (req, res) => {
 //show
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
+  .populate('baker')
   .then(foundBread => {
     const bakedBy = foundBread.getBakedBy()
     console.log(bakedBy)
